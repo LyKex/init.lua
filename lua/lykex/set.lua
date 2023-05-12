@@ -29,7 +29,7 @@ vim.o.smartcase = true
 vim.wo.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 50
+vim.o.updatetime = 300
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 
@@ -39,6 +39,9 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+-- remove banner in netrw
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
+
+vim.wo.wrap = false
