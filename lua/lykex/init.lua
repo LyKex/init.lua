@@ -28,6 +28,7 @@ require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
+  'tpope/vim-surround',
   "mbbill/undotree",
 
   -- Detect tabstop and shiftwidth automatically
