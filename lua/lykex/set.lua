@@ -2,10 +2,11 @@
 -- See `:help vim.o`
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
+vim.wo.rnu = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -45,3 +46,5 @@ vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 
 vim.wo.wrap = false
+
+vim.opt.swapfile = false

@@ -50,10 +50,6 @@ end
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
   -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
 
   lua_ls = {
     Lua = {
@@ -131,3 +127,15 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+ -- set up julia lsp
+require('lspconfig').julials.setup({
+  on_new_config = function(new_config, _)
+        local julia = vim.fn.expand("~/.julia/environments/nvim-lspconfig/bin/julia")
+        if require'lspconfig'.util.path.is_file(julia) then
+	    -- vim.notify("Julia lsp running!")
+            new_config.cmd[1] = julia
+        end
+    end
+})
+
