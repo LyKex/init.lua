@@ -58,7 +58,19 @@ local servers = {
       diagnostics = { globals = { 'vim' } },
     },
   },
+  julials = {},
 }
+
+-- set up julia lsp
+require('lspconfig').julials.setup({
+  on_new_config = function(new_config, _)
+    local julia = vim.fn.expand("~/.julia/environments/nvim-lspconfig/bin/julia")
+    if require 'lspconfig'.util.path.is_file(julia) then
+      -- vim.notify("Julia lsp running!")
+      new_config.cmd[1] = julia
+    end
+  end
+})
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -129,15 +141,4 @@ cmp.setup {
     { name = 'pylsp' },
   },
 }
-
- -- set up julia lsp
-require('lspconfig').julials.setup({
-  on_new_config = function(new_config, _)
-        local julia = vim.fn.expand("~/.julia/environments/nvim-lspconfig/bin/julia")
-        if require'lspconfig'.util.path.is_file(julia) then
-	    -- vim.notify("Julia lsp running!")
-            new_config.cmd[1] = julia
-        end
-    end
-})
 
