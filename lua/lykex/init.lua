@@ -28,13 +28,14 @@ require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
-  'tpope/vim-surround',
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
-  'svermeulen/vim-subversive',
 
-  -- NOTE: This is where your plugins related to LSP can be installed.
+  -- better selecting and replace
+  'tpope/vim-surround',
+  -- 'svermeulen/vim-subversive',
+
   --  The configuration is done below. Search for lspconfig to find it below.
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -138,6 +139,8 @@ require('lazy').setup({
   "mbbill/undotree",
   "Pocco81/auto-save.nvim",
 
+  -- sync clipboard with system
+  "ojroques/nvim-osc52",
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
@@ -170,7 +173,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Setup neovim lua configuration
 require('neodev').setup()
-
 
 
 -- The line beneath this is called `modeline`. See `:help modeline`
