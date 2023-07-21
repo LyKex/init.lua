@@ -28,4 +28,4 @@ vim.keymap.set("n", "<leader>j", "<C-W>j")
 vim.keymap.set("n", "<leader>k", "<C-W>k")
 vim.keymap.set("n", "<leader>l", "<C-W>l")
 
-vim.keymap.set("n", "<C-n>", vim.cmd.nohl)
+vim.keymap.set("n", "<Esc><Esc>", vim.cmd.nohl)
