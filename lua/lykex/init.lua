@@ -1,7 +1,6 @@
 require("lykex.set")
 require("lykex.keymap")
 
--- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -25,6 +24,9 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
+  -- align
+  'Vonr/align.nvim',
+
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
@@ -33,7 +35,7 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
   -- better selecting and replace
-  'tpope/vim-surround',
+  'kylechui/nvim-surround',
   -- 'svermeulen/vim-subversive',
 
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -141,6 +143,12 @@ require('lazy').setup({
 
   -- sync clipboard with system
   "ojroques/nvim-osc52",
+
+  -- vim for julia
+  'JuliaEditorSupport/julia-vim',
+
+  -- navigate files
+  'ThePrimeagen/harpoon',
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
