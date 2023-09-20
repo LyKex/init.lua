@@ -48,3 +48,15 @@ vim.g.netrw_winsize = 25
 vim.wo.wrap = false
 
 vim.opt.swapfile = false
+
+-- auto reload file when changed
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained", "FileChangedShell" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = { "*" },
+})
+vim.api.nvim_create_autocmd({"FileChangedShellPost"}, {
+  command = "echohl WarningMsg| echo 'buffer reloaded' | echohl None",
+  pattern = { "*" },
+})
+
