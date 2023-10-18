@@ -35,5 +35,5 @@ vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]re
 vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>km', builtin.keymaps, { desc = '[K]ey[m]aps' })
 vim.keymap.set('n', '<leader>ju', function()
-  builtin.find_files({search_dirs={"~/.julia"}})
+  builtin.find_files({search_dirs={"~/.julia/dev"}})
 end, { desc = 'Search [JU]lia' })
