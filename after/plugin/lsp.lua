@@ -59,6 +59,7 @@ local servers = {
     },
   },
   julials = {},
+  pylsp = {},
 }
 
 -- set up julia lsp

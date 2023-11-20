@@ -35,7 +35,16 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
   -- better selecting and replace
-  'kylechui/nvim-surround',
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+        require("nvim-surround").setup({
+            -- Configuration here, or leave empty to use defaults
+        })
+    end
+  },
   -- 'svermeulen/vim-subversive',
 
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -106,10 +115,8 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
-    },
+    main = "ibl",
+    opts = { },
   },
 
   -- "gc" to comment visual regions/lines
