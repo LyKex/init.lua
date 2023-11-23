@@ -25,7 +25,21 @@ require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
   -- align
-  'Vonr/align.nvim',
+  {
+    'Vonr/align.nvim',
+    branch = "v2",
+    lazy = true,
+    init = function()
+      -- mappings
+    end
+  },
+
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
 
   -- Git related plugins
   'tpope/vim-fugitive',

@@ -34,5 +34,5 @@ vim.keymap.set(
 )
 
 
--- adasd         = asdasda # asdsa
+-- adasd         = asdasda # asds
 -- asdasasdasdas = asdasd  # asda
