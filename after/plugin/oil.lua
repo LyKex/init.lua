@@ -6,6 +6,19 @@ require("oil").setup({
     "size",
     "mtime",
   },
+  delete_to_trash = true,
+  skip_confirm_for_simple_edits = true,
+  prompt_save_on_select_new_entry = true,
+  view_options = {
+    show_hidden = true,
+    is_hidden_file = function(name, bufnr)
+      return vim.startswith(name, ".")
+    end,
+    sort = {
+    { "mtime", "desc" },
+    },
+  },
+
 })
 
 
