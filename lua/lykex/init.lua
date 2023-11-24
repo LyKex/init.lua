@@ -22,8 +22,7 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
-
+    
   -- align
   {
     'Vonr/align.nvim',
@@ -193,6 +192,9 @@ require('lazy').setup({
   --    An additional note is that if you only copied in the `init.lua`, you can just comment this line
   --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
   --  { import = 'custom.plugins' },
+  {
+    'github/copilot.vim',
+  },
 }, {})
 
 -- [[ Highlight on yank ]]
