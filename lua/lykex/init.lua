@@ -23,6 +23,14 @@ vim.opt.rtp:prepend(lazypath)
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
     
+  --restore neovim session, works with tmux-resurrect
+  {
+    'tpope/vim-obsession',
+    config = function()
+      vim.g.obsession_auto_save = 1
+    end
+  },
+  
   -- align
   {
     'Vonr/align.nvim',

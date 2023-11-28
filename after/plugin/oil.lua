@@ -15,7 +15,7 @@ require("oil").setup({
       return vim.startswith(name, ".")
     end,
     sort = {
-    { "mtime", "desc" },
+    { "mtime", "asc" },
     },
   },
 
