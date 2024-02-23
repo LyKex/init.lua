@@ -50,7 +50,6 @@ end
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
   -- clangd = {},
-
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -59,7 +58,7 @@ local servers = {
     },
   },
   julials = {},
-  pylsp = {},
+  -- pylsp= {},
 }
 
 -- set up julia lsp
@@ -116,7 +115,7 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
+    ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
@@ -125,21 +124,23 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
-    -- ['<S-Tab>'] = cmp.mapping(function(fallback)
-    --   if cmp.visible() then
-    --     cmp.select_prev_item()
-    --   elseif luasnip.jumpable(-1) then
-    --     luasnip.jump(-1)
-    --   else
-    --     fallback()
-    --   end
-    -- end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
   },
   sources = {
+    { name = "copilot", group_index = 2 },
+    { name = "path", group_index = 2},
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'julials' },
-    { name = 'pylsp' },
+    -- { name = 'pylsp' },
   },
 }
 

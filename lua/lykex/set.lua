@@ -11,10 +11,9 @@ vim.wo.rnu = true
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+-- Let nvim decide which clipboard to use, see :h clipboard.
+-- If $TMUX is set, it will use TMUX clipboard.
+-- vim.o.clipboard = 'xlcip'
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -60,3 +59,41 @@ vim.api.nvim_create_autocmd({"FileChangedShellPost"}, {
   pattern = { "*" },
 })
 
+
+-- global util functions
+function basename(str)
+  return str:match("(.*[/\\])")
+end
+
+-- terminal
+function open_terminal_curr_dir()
+  local dir = basename(vim.api.nvim_buf_get_name(0))
+  vim.cmd("terminal")
+  vim.cmd("startinsert")
+  vim.fn.chansend(vim.b.terminal_job_id, "cd " .. dir .. "\n")
+end
+
+local on_exit = function(obj)
+  print(obj.code)
+  print(obj.signal)
+  print(obj.stdout)
+  print(obj.stderr)
+end
+
+vim.api.nvim_create_user_command('Job', function(input)
+  local cmd=vim.system({"sbatch", "job.sh"}, {cwd=basename(vim.api.nvim_buf_get_name(0)), text=true}, on_exit)
+end, { nargs = 0 })
+
+
+vim.g.clipboard = {
+  name = 'myClipboard',
+  copy = {
+    ["+"] = {'tmux', 'load-buffer', '-'},
+    ["*"] = {'tmux', 'load-buffer', '-'},
+  },
+  paste = {
+    ["+"] = {'tmux', 'save-buffer', '-'},
+    ["*"] = {'tmux', 'save-buffer', '-'},
+  },
+  cache_enabled = true,
+}

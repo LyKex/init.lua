@@ -176,8 +176,10 @@ require('lazy').setup({
   "mbbill/undotree",
   "Pocco81/auto-save.nvim",
 
-  -- sync clipboard with system
-  "ojroques/nvim-osc52",
+  -- sync clipboard with system through OSC52 escape sequence
+  -- works over ssh, tmux but needs terminal support. Currently
+  -- gnome terminal does not, see https://gitlab.gnome.org/GNOME/vte/-/issues/2495.
+  -- "ojroques/nvim-osc52",
 
   -- vim for julia
   'JuliaEditorSupport/julia-vim',
@@ -201,8 +203,23 @@ require('lazy').setup({
   --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
   --  { import = 'custom.plugins' },
   {
-    'github/copilot.vim',
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
+    end,
   },
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function ()
+      require("copilot_cmp").setup()
+    end
+  },
+  "hrsh7th/cmp-path",
 }, {})
 
 -- [[ Highlight on yank ]]

@@ -1,8 +1,9 @@
 -- vim-slime set up for julia
 vim.g.slime_target = "tmux"
 vim.g.slime_default_config = {
-  socket_name = "default",
-  target_pane= "{right}"
+  -- socket_name = "default",
+  socket_name = vim.api.nvim_eval('get(split($TMUX, ","), 0)'),
+  target_pane= "{top-right}"
   -- target_pane=function ()
   --  vim.cmd.trim(vim.cmd.system('tmux display -pt "{last}" "#{pane_id}"'))
   -- end
